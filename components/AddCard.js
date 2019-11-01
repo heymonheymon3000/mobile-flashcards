@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  KeyboardAvoidingView,
-  View,
-  Text,
-  TextInput,
-  StyleSheet
-} from "react-native";
+import { KeyboardAvoidingView, View, Text, TextInput, StyleSheet } from "react-native";
 import StyledButton from "./StyledButton";
 import { white, gray } from "../utils/colors";
 import { createCard } from "../actions";
@@ -29,10 +23,8 @@ class AddCard extends Component {
     this.props.createCard(deckId, question, answer);
     saveCard(deckId, { question, answer });
 
-    // Return to Deck Detail view.
     this.props.navigation.goBack();
 
-    // Reset form for future use.
     this.setState({
       question: "",
       answer: ""
@@ -48,7 +40,7 @@ class AddCard extends Component {
           <TextInput
             style={styles.input}
             value={question}
-            placeholder="e.g. What's the fastest land mammal?"
+            placeholder="Write question here?"
             onChangeText={question => this.setState({ question })}
           />
         </View>
@@ -57,7 +49,7 @@ class AddCard extends Component {
           <TextInput
             style={styles.input}
             value={answer}
-            placeholder="e.g. Cheetah"
+            placeholder="Here is my question."
             onChangeText={answer => this.setState({ answer })}
           />
         </View>

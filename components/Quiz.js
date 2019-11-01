@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from "react-native";
 import pluralize from "pluralize";
 import { white, gray } from "../utils/colors";
 import { clearLocalNotification, setLocalNotification } from "../utils/helpers";
-
 import QuizCard from "./QuizCard";
 import QuizActions from "./QuizActions";
 import QuizResults from "./QuizResults";
@@ -11,7 +10,7 @@ import QuizResults from "./QuizResults";
 const defaultState = {
   correctAnswerCount: 0,
   incorrectAnswerCount: 0,
-  currentQuestionIndex: 0, // tracks which card is currently being shown
+  currentQuestionIndex: 0,
   showResults: false
 };
 
@@ -41,13 +40,12 @@ class Quiz extends Component {
     this.setState(defaultState);
   };
 
-  /* 
-   * Plays a vital role in managing quix state, will update 
-   * correct/incorrect answer count, trigger display of next card 
+  /*
+   * Plays a vital role in managing quix state, will update
+   * correct/incorrect answer count, trigger display of next card
    * and trigger display of quiz results at the end of Quiz.
    */
   recordAnswer = knewAnswer => {
-    // Update answer count.
     let {
       correctAnswerCount,
       incorrectAnswerCount,
@@ -55,29 +53,21 @@ class Quiz extends Component {
       currentQuestionIndex
     } = this.state;
 
-    // Update the count.
     if (knewAnswer) {
       correctAnswerCount++;
     } else {
       incorrectAnswerCount++;
     }
 
-    // Determine whether to show another card or quiz results.
     const deck = this._getDeck();
     if (currentQuestionIndex === deck.cards.length - 1) {
-      // time to show results.
       showResults = true;
-
-      // User completed a quiz, disable today's notification.
       clearLocalNotification();
-      // Set tomorrow's notification.
       setLocalNotification();
     } else {
-      // show next card.
       currentQuestionIndex++;
     }
 
-    // Update state with new values.
     this.setState(state => ({
       correctAnswerCount,
       incorrectAnswerCount,

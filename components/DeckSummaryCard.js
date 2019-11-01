@@ -5,7 +5,7 @@ import { white, gray, lightgray  } from "../utils/colors";
 
 let toggle = 0;
 
-function randomColorGenerator() {
+function toggleColorGenerator() {
   if(toggle === 0) {
     toggle = 1;
     return white
@@ -17,7 +17,7 @@ function randomColorGenerator() {
 
 const DeckSummaryCard = ({ id, name, cardCount, navigation }) => (
   <TouchableOpacity
-    style={[styles.container, {backgroundColor: randomColorGenerator()}]}
+    style={[styles.container, {backgroundColor: toggleColorGenerator()}]}
     onPress={() =>
       navigation.navigate("DeckDetail", { deckId: id, name: name })
     }

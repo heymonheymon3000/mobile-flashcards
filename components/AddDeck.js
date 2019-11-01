@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  Text,
-  StyleSheet,
-  TextInput,
-  KeyboardAvoidingView
-} from "react-native";
+import { Text, StyleSheet, TextInput, KeyboardAvoidingView } from "react-native";
 import StyledButton from "./StyledButton";
 import { createDeck } from "../actions";
 import { saveDeck } from "../utils/api";
@@ -31,16 +26,14 @@ class AddDeck extends Component {
 
   handleSubmit = () => {
     deck = this._createDeckObject();
-    this.props.createDeck(deck.id, deck.name); // Add to redux
-    saveDeck(deck); // Persist to AsyncStorage
+    this.props.createDeck(deck.id, deck.name);
+    saveDeck(deck);
 
-    // Route to new deck's detail view.
     this.props.navigation.navigate("DeckDetail", {
       deckId: deck.id,
       name: deck.name
     });
 
-    // Reset input for future use.
     this.setState(() => ({
       input: ""
     }));
@@ -50,16 +43,16 @@ class AddDeck extends Component {
     const { input } = this.state;
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
-        <Text style={styles.label}>What will you learn in this deck?</Text>
+        <Text style={styles.label}>Name of new Deck?</Text>
         <TextInput
           style={styles.input}
           value={input}
-          placeholder="e.g. Algebra"
+          placeholder="Name of deck"
           onChangeText={this.handleInputChange}
         />
         <StyledButton onPress={this.handleSubmit}>
           <Text>Create Deck</Text>
-        </StyledButton>        
+        </StyledButton>
       </KeyboardAvoidingView>
     );
   }
@@ -85,7 +78,7 @@ const styles = StyleSheet.create({
     borderRadius: 1,
     borderColor: gray,
     margin: 20
-  }  
+  }
 });
 
 const mapDispatchToProps = dispatch => ({

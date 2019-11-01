@@ -20,7 +20,6 @@ export const saveCard = (deckId, card) => {
   return AsyncStorage.getItem(FLASHCARD_STORAGE_KEY).then(results => {
     const data = JSON.parse(results);
 
-    // Add card to existing deck data.
     data[deckId] = {
       ...data[deckId],
       cards: [
@@ -29,7 +28,6 @@ export const saveCard = (deckId, card) => {
       ]
     };
 
-    // Save updated deck data back to storage
     AsyncStorage.setItem(FLASHCARD_STORAGE_KEY, JSON.stringify(data));
   });
 };

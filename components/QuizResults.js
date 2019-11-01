@@ -3,12 +3,7 @@ import { Text, View, StyleSheet } from "react-native";
 import { purple, white, gray } from "../utils/colors";
 import StyledButton from "./StyledButton";
 
-const QuizResuts = ({
-  correctAnswerCount,
-  incorrectAnswerCount,
-  restartQuiz,
-  navigation
-}) => (
+const QuizResuts = ({ correctAnswerCount, incorrectAnswerCount, restartQuiz, navigation }) => (
   <View style={styles.container}>
     <Text style={styles.header}>You scored</Text>
     <Text style={styles.result}>{`${Math.round(

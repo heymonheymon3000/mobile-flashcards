@@ -3,8 +3,6 @@ import { Notifications } from "expo";
 import * as Permissions from 'expo-permissions'
 const NOTIFICATION_KEY = "FlashCards:notifications";
 
-// Somewhat hacky function to generate unique ID for each Deck.
-// Warning: Wouldn't be suitable for use in a production application.
 export const generateId = () => {
   return (
     Math.random()
