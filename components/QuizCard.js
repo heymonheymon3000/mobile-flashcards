@@ -1,22 +1,22 @@
-import React, { Component } from "react";
-import { Text, View, StyleSheet } from "react-native";
-import StyledButton from "./StyledButton";
-import { blue, white, gray } from "../utils/colors";
+import React, { Component } from "react"
+import { Text, View, StyleSheet } from "react-native"
+import StyledButton from "./StyledButton"
+import { blue, white, gray } from "../utils/colors"
 
 class QuizCard extends Component {
   state = {
     showQuestion: true
-  };
+  }
 
   toggleQuestion = () => {
     this.setState(state => ({
       showQuestion: !state.showQuestion
-    }));
-  };
+    }))
+  }
 
   render() {
-    const { showQuestion } = this.state;
-    const { card } = this.props;
+    const { showQuestion } = this.state
+    const { card } = this.props
     return (
       <View style={styles.container}>
         <View>
@@ -33,7 +33,7 @@ class QuizCard extends Component {
           >{`See ${showQuestion ? "Answer" : "Question"}`}</StyledButton>
         </View>
       </View>
-    );
+    )
   }
 }
 
@@ -60,6 +60,6 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: white
   }
-});
+})
 
-export default QuizCard;
+export default QuizCard

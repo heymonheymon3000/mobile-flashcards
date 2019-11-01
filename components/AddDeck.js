@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Text, StyleSheet, TextInput, KeyboardAvoidingView } from "react-native";
-import StyledButton from "./StyledButton";
-import { createDeck } from "../actions";
-import { saveDeck } from "../utils/api";
-import { generateId } from "../utils/helpers";
-import { white, gray } from "../utils/colors";
+import React, { Component } from "react"
+import { connect } from "react-redux"
+import { Text, StyleSheet, TextInput, KeyboardAvoidingView } from "react-native"
+import StyledButton from "./StyledButton"
+import { createDeck } from "../actions"
+import { saveDeck } from "../utils/api"
+import { generateId } from "../utils/helpers"
+import { white, gray } from "../utils/colors"
 
 class AddDeck extends Component {
   state = {
     input: ""
-  };
+  }
 
   _createDeckObject = () => ({
     id: generateId(),
@@ -21,26 +21,26 @@ class AddDeck extends Component {
   handleInputChange = input => {
     this.setState(() => ({
       input
-    }));
-  };
+    }))
+  }
 
   handleSubmit = () => {
-    deck = this._createDeckObject();
-    this.props.createDeck(deck.id, deck.name);
-    saveDeck(deck);
+    deck = this._createDeckObject()
+    this.props.createDeck(deck.id, deck.name)
+    saveDeck(deck)
 
     this.props.navigation.navigate("DeckDetail", {
       deckId: deck.id,
       name: deck.name
-    });
+    })
 
     this.setState(() => ({
       input: ""
-    }));
-  };
+    }))
+  }
 
   render() {
-    const { input } = this.state;
+    const { input } = this.state
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <Text style={styles.label}>Name of new Deck?</Text>
@@ -54,7 +54,7 @@ class AddDeck extends Component {
           <Text>Create Deck</Text>
         </StyledButton>
       </KeyboardAvoidingView>
-    );
+    )
   }
 }
 
@@ -79,13 +79,13 @@ const styles = StyleSheet.create({
     borderColor: gray,
     margin: 20
   }
-});
+})
 
 const mapDispatchToProps = dispatch => ({
   createDeck: (id, deckName) => dispatch(createDeck(id, deckName))
-});
+})
 
 export default connect(
   null,
   mapDispatchToProps
-)(AddDeck);
+)(AddDeck)

@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import pluralize from "pluralize";
-import { connect } from "react-redux";
-import { Text, View, StyleSheet } from "react-native";
-import StyledButton from "./StyledButton";
-import { green, gray, white } from "../utils/colors";
+import React, { Component } from "react"
+import pluralize from "pluralize"
+import { connect } from "react-redux"
+import { Text, View, StyleSheet } from "react-native"
+import StyledButton from "./StyledButton"
+import { green, gray, white } from "../utils/colors"
 
 class DeckDetail extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: navigation.getParam("name")
-  });
+  })
 
-  startQuiz = () => {};
+  startQuiz = () => {}
 
   render() {
-    const { navigation, deck } = this.props;
+    const { navigation, deck } = this.props
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -27,7 +27,7 @@ class DeckDetail extends Component {
           {deck.cards.length !== 0 && (
             <StyledButton
               onPress={() => {
-                navigation.navigate("Quiz", { deck });
+                navigation.navigate("Quiz", { deck })
               }}
             >
               <Text>Start Quiz</Text>
@@ -36,14 +36,14 @@ class DeckDetail extends Component {
           <StyledButton
             style={{ backgroundColor: deck.cards.length !== 0 ? gray : green }}
             onPress={() => {
-              navigation.navigate("AddCard", { deckId: deck.id });
+              navigation.navigate("AddCard", { deckId: deck.id })
             }}
           >
             <Text>Add Card</Text>
           </StyledButton>
         </View>
       </View>
-    );
+    )
   }
 }
 
@@ -70,13 +70,13 @@ const styles = StyleSheet.create({
   actions: {
     marginTop: 20
   }
-});
+})
 
 const mapStateToProps = (state, { navigation }) => ({
   deck: state[navigation.getParam("deckId")]
-});
+})
 
 export default connect(
   mapStateToProps,
   null
-)(DeckDetail);
+)(DeckDetail)

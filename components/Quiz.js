@@ -1,44 +1,44 @@
-import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import pluralize from "pluralize";
-import { white, gray } from "../utils/colors";
-import { clearLocalNotification, setLocalNotification } from "../utils/helpers";
-import QuizCard from "./QuizCard";
-import QuizActions from "./QuizActions";
-import QuizResults from "./QuizResults";
+import React, { Component } from "react"
+import { View, Text, StyleSheet } from "react-native"
+import pluralize from "pluralize"
+import { white, gray } from "../utils/colors"
+import { clearLocalNotification, setLocalNotification } from "../utils/helpers"
+import QuizCard from "./QuizCard"
+import QuizActions from "./QuizActions"
+import QuizResults from "./QuizResults"
 
 const defaultState = {
   correctAnswerCount: 0,
   incorrectAnswerCount: 0,
   currentQuestionIndex: 0,
   showResults: false
-};
+}
 
 class Quiz extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: `${navigation.getParam("deck").name} Quiz`
-  });
+  })
 
-  state = defaultState;
+  state = defaultState
 
   _getRemainingCountMessage = () => {
-    const { correctAnswerCount, incorrectAnswerCount } = this.state;
+    const { correctAnswerCount, incorrectAnswerCount } = this.state
     const remainingQuestions =
       this._getDeck().cards.length -
-      (correctAnswerCount + incorrectAnswerCount + 1);
+      (correctAnswerCount + incorrectAnswerCount + 1)
     return `${remainingQuestions} ${pluralize(
       "question",
       remainingQuestions
-    )} remaining.`;
-  };
+    )} remaining.`
+  }
 
   _getDeck = () => {
-    return this.props.navigation.getParam("deck");
-  };
+    return this.props.navigation.getParam("deck")
+  }
 
   restartQuiz = () => {
-    this.setState(defaultState);
-  };
+    this.setState(defaultState)
+  }
 
   /*
    * Plays a vital role in managing quix state, will update
@@ -51,21 +51,21 @@ class Quiz extends Component {
       incorrectAnswerCount,
       showResults,
       currentQuestionIndex
-    } = this.state;
+    } = this.state
 
     if (knewAnswer) {
-      correctAnswerCount++;
+      correctAnswerCount++
     } else {
-      incorrectAnswerCount++;
+      incorrectAnswerCount++
     }
 
-    const deck = this._getDeck();
+    const deck = this._getDeck()
     if (currentQuestionIndex === deck.cards.length - 1) {
-      showResults = true;
-      clearLocalNotification();
-      setLocalNotification();
+      showResults = true
+      clearLocalNotification()
+      setLocalNotification()
     } else {
-      currentQuestionIndex++;
+      currentQuestionIndex++
     }
 
     this.setState(state => ({
@@ -73,8 +73,8 @@ class Quiz extends Component {
       incorrectAnswerCount,
       showResults,
       currentQuestionIndex
-    }));
-  };
+    }))
+  }
 
   render() {
     const {
@@ -82,7 +82,7 @@ class Quiz extends Component {
       incorrectAnswerCount,
       currentQuestionIndex,
       showResults
-    } = this.state;
+    } = this.state
 
     return !showResults ? (
       <View style={styles.container}>
@@ -97,7 +97,7 @@ class Quiz extends Component {
         restartQuiz={this.restartQuiz}
         navigation={this.props.navigation}
       />
-    );
+    )
   }
 }
 
@@ -113,6 +113,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 10
   }
-});
+})
 
-export default Quiz;
+export default Quiz

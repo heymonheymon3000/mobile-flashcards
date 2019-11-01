@@ -1,6 +1,6 @@
-import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { green, red, white } from "../utils/colors";
+import React from "react"
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
+import { green, red, white } from "../utils/colors"
 
 const QuizActions = ({ recordAnswer }) => (
   <View style={styles.container}>
@@ -20,7 +20,7 @@ const QuizActions = ({ recordAnswer }) => (
       </TouchableOpacity>
     </View>
   </View>
-);
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -50,6 +50,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold"
   }
-});
+})
 
-export default QuizActions;
+export default QuizActions

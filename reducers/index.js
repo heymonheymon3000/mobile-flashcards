@@ -1,6 +1,6 @@
-import { ActionTypes } from "../actions";
+import { ActionTypes } from "../actions"
 
-const initialState = null;
+const initialState = null
 
 const decks = (state = initialState, action) => {
   switch (action.type) {
@@ -8,8 +8,8 @@ const decks = (state = initialState, action) => {
       return {
         ...state,
         ...action.decks
-      };
-    case ActionTypes.CREATE_DECK: {      
+      }
+    case ActionTypes.CREATE_DECK: {
       return {
         ...state,
         [action.id]: {
@@ -17,7 +17,7 @@ const decks = (state = initialState, action) => {
           name: action.name,
           cards: []
         }
-      };
+      }
     }
     case ActionTypes.CREATE_CARD: {
       return {
@@ -29,11 +29,11 @@ const decks = (state = initialState, action) => {
             { question: action.question, answer: action.answer }
           ]
         }
-      };
+      }
     }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default decks;
+export default decks

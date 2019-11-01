@@ -1,13 +1,13 @@
-import React from "react";
-import pluralize from "pluralize";
-import { Text, StyleSheet, TouchableOpacity } from "react-native";
-import { white, gray, lightgray  } from "../utils/colors";
+import React from "react"
+import pluralize from "pluralize"
+import { Text, StyleSheet, TouchableOpacity } from "react-native"
+import { white, gray, lightgray  } from "../utils/colors"
 
-let toggle = 0;
+let toggle = 0
 
 function toggleColorGenerator() {
   if(toggle === 0) {
-    toggle = 1;
+    toggle = 1
     return white
   } else {
     toggle = 0
@@ -28,7 +28,7 @@ const DeckSummaryCard = ({ id, name, cardCount, navigation }) => (
       cardCount
     )}`}</Text>
   </TouchableOpacity>
-);
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -53,6 +53,6 @@ const styles = StyleSheet.create({
     color: gray,
     marginBottom: 5
   }
-});
+})
 
-export default DeckSummaryCard;
+export default DeckSummaryCard

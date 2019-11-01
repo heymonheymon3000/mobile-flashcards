@@ -1,25 +1,25 @@
-import React, { Component } from "react";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import { View, StatusBar,Platform } from "react-native";
+import React, { Component } from "react"
+import { createStore } from "redux"
+import { Provider } from "react-redux"
+import { View, StatusBar,Platform } from "react-native"
 import { createAppContainer } from 'react-navigation'
-import { createStackNavigator } from "react-navigation-stack";
-import { createBottomTabNavigator } from "react-navigation-tabs";
-import { Feather } from "@expo/vector-icons";
-import { white, purple, gray } from "./utils/colors";
-import { setLocalNotification } from "./utils/helpers";
-import reducer from "./reducers";
-import Decks from "./components/Decks";
-import AddDeck from "./components/AddDeck";
-import AddCard from "./components/AddCard";
-import DeckDetail from "./components/DeckDetail";
-import Quiz from "./components/Quiz";
+import { createStackNavigator } from "react-navigation-stack"
+import { createBottomTabNavigator } from "react-navigation-tabs"
+import { Feather } from "@expo/vector-icons"
+import { white, purple, gray } from "./utils/colors"
+import { setLocalNotification } from "./utils/helpers"
+import reducer from "./reducers"
+import Decks from "./components/Decks"
+import AddDeck from "./components/AddDeck"
+import AddCard from "./components/AddCard"
+import DeckDetail from "./components/DeckDetail"
+import Quiz from "./components/Quiz"
 
 const FlashcardsStatusBar = ({ backgroundColor, ...props }) => (
   <View style={{ backgroundColor }}>
     <StatusBar translucent backgroundColor={backgroundColor} {...props} />
   </View>
-);
+)
 
 const Tabs = {
   Decks: {
@@ -80,12 +80,12 @@ const MainNavigator = createAppContainer(createStackNavigator({
       headerStyle: { backgroundColor: purple },
       headerTitleStyle: { fontWeight: "bold" }
     }
-  }));
+  }))
 
 
 class App extends Component {
   componentDidMount() {
-    setLocalNotification();
+    setLocalNotification()
   }
 
   render() {
@@ -99,8 +99,8 @@ class App extends Component {
           <MainNavigator />
         </View>
       </Provider>
-    );
+    )
   }
 }
 
-export default App;
+export default App

@@ -1,7 +1,7 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
-import { purple, white, gray } from "../utils/colors";
-import StyledButton from "./StyledButton";
+import React from "react"
+import { Text, View, StyleSheet } from "react-native"
+import { purple, white, gray } from "../utils/colors"
+import StyledButton from "./StyledButton"
 
 const QuizResuts = ({ correctAnswerCount, incorrectAnswerCount, restartQuiz, navigation }) => (
   <View style={styles.container}>
@@ -19,7 +19,7 @@ const QuizResuts = ({ correctAnswerCount, incorrectAnswerCount, restartQuiz, nav
       </StyledButton>
     </View>
   </View>
-);
+)
 
 const styles = StyleSheet.create({
   container: {
@@ -41,6 +41,6 @@ const styles = StyleSheet.create({
   actions: {
     marginTop: 50
   }
-});
+})
 
-export default QuizResuts;
+export default QuizResuts
