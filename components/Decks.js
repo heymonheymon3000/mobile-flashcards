@@ -3,8 +3,8 @@ import { connect } from "react-redux";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import DeckSummaryCard from "./DeckSummaryCard";
 import StyledButton from "./StyledButton";
-import { retrieveDecks } from "../utils/api";
 import { receiveDecks } from "../actions";
+import { retrieveDecks } from "../utils/api";
 import { white } from "../utils/colors";
 
 class Decks extends Component {
@@ -25,7 +25,7 @@ class Decks extends Component {
 
     if (!this.state.ready) {
       return (
-        <View style={styles.blank}>
+        <View style={styles.empty}>
           <Text>Loading...</Text>
         </View>
       );
@@ -46,7 +46,7 @@ class Decks extends Component {
           />
         </View>
       ) : (
-        <View style={styles.blank}>
+        <View style={styles.empty}>
           <Text style={{ fontSize: 18 }}>You don't have any decks yet.</Text>
           <StyledButton
             onPress={() => {
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: "flex-start"
   },
-  blank: {
+  empty: {
     flex: 1,
     backgroundColor: white,
     justifyContent: "center",

@@ -1,11 +1,23 @@
 import React from "react";
 import pluralize from "pluralize";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
-import { white, gray } from "../utils/colors";
+import { white, gray, lightgray  } from "../utils/colors";
+
+let toggle = 0;
+
+function randomColorGenerator() {
+  if(toggle === 0) {
+    toggle = 1;
+    return white
+  } else {
+    toggle = 0
+    return lightgray
+  }
+}
 
 const DeckSummaryCard = ({ id, name, cardCount, navigation }) => (
   <TouchableOpacity
-    style={styles.container}
+    style={[styles.container, {backgroundColor: randomColorGenerator()}]}
     onPress={() =>
       navigation.navigate("DeckDetail", { deckId: id, name: name })
     }

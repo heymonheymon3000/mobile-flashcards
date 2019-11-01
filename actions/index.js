@@ -1,9 +1,9 @@
 import keyMirror from "keymirror";
 
 export const ActionTypes = keyMirror({
-  RECEIVE_DECKS: null,
-  CREATE_DECK: null,
-  CREATE_CARD: null
+  RECEIVE_DECKS: 'RECEIVE_DECKS',
+  CREATE_DECK: 'CREATE_DECK',
+  CREATE_CARD: 'CREATE_CARD'
 });
 
 export const createDeck = (id, name) => ({

@@ -6,10 +6,8 @@ import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from "react-navigation-stack";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { Feather } from "@expo/vector-icons";
-// import { Constants } from "expo";
 import { white, purple, gray } from "./utils/colors";
 import { setLocalNotification } from "./utils/helpers";
-
 import reducer from "./reducers";
 import Decks from "./components/Decks";
 import AddDeck from "./components/AddDeck";
@@ -66,7 +64,8 @@ const navigationOptions = {
   }
 }
 
-const TabNav = createAppContainer(createBottomTabNavigator(Tabs, navigationOptions))
+const TabNav = createAppContainer(
+  createBottomTabNavigator(Tabs, navigationOptions))
 
 const MainNavigator = createAppContainer(createStackNavigator({
     Home: TabNav,
@@ -82,7 +81,6 @@ const MainNavigator = createAppContainer(createStackNavigator({
       headerTitleStyle: { fontWeight: "bold" }
     }
   }));
-
 
 
 class App extends Component {
